@@ -22,9 +22,14 @@ jobs:
     container: ${{ matrix.container }}
     strategy:
       matrix:
-        container: ['ubuntu:16.04', 'ubuntu:18.04']
+        container: ['ubuntu:16.04', 'ubuntu:18.04', 'centos:7']
     steps:
-    - run: cat /etc/debian_version
+      - name: Running on Ubuntu 16 or 18
+        if:  matrix.container == 'ubuntu:16.04' || matrix.container == 'ubuntu:18.04'
+        run: cat /etc/*release*
+      - name: Running on CentOS 7
+        if:  matrix.container == 'centos:7'
+        run: cat /etc/centos-release
     # # The type of runner that the job will run on
     # runs-on: ubuntu-latest
 
