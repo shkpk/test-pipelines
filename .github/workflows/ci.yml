@@ -26,10 +26,14 @@ jobs:
     steps:
       - name: Running on Ubuntu 16 or 18
         if:  matrix.container == 'ubuntu:16.04' || matrix.container == 'ubuntu:18.04'
-        run: cat /etc/*release*
+        run: |
+          cat /etc/*release*
+          apt-get install sudo -y
       - name: Running on CentOS 7
         if:  matrix.container == 'centos:7'
-        run: cat /etc/centos-release
+        run: |
+          cat /etc/centos-release
+          yum install sudo -y
       - name: Download Qt
         uses: jurplel/install-qt-action@v3
         with:
