@@ -29,13 +29,13 @@ jobs:
         run: |
           cat /etc/*release*
           apt-get -y update
-          apt-get install sudo -y
+          apt-get -y install sudo libc6
       - name: Running on CentOS 7
         if:  matrix.container == 'centos:7'
         run: |
           cat /etc/centos-release
-          yum -y update
-          yum install sudo -y
+          # yum -y update
+          # yum install sudo -y
       - name: Download Qt
         if:  matrix.container == 'ubuntu:18.04'
         uses: jurplel/install-qt-action@v3
