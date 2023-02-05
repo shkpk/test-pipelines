@@ -37,6 +37,7 @@ jobs:
           yum -y update
           yum install sudo -y
       - name: Download Qt
+        if:  matrix.container == 'ubuntu:18.04'
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: ==2.1.*
