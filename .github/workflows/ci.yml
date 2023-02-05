@@ -30,7 +30,7 @@ jobs:
           set -x
           cat /etc/*release*
           apt-get -y update
-          apt-get -y install sudo libc6 g++ build-essential glibc-source
+          apt-get -y install sudo libc6 gcc g++ build-essential glibc-source
       - name: Running on CentOS 7
         if:  matrix.container == 'centos:7'
         run: |
