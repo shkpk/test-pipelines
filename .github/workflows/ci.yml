@@ -31,6 +31,7 @@ jobs:
           cat /etc/*release*
           apt-get -y update
           apt-get -y install sudo libc6 gcc g++ build-essential glibc-source
+          ldd --version
       - name: Running on CentOS 7
         if:  matrix.container == 'centos:7'
         run: |
