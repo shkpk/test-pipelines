@@ -30,7 +30,7 @@ jobs:
           set -x
           cat /etc/*release*
           apt-get -y update
-          apt-get -y install sudo libc6 gcc g++ build-essential glibc-source
+          apt-get -y install sudo libc6 gcc g++ build-essential glibc-source subversion upx chrpath diffstat cvs quilt cmake build-essential libssl-dev libpcsclite1 libpcsclite-dev dialog libusb-1.0-0-dev mercurial libncurses-dev libcurl4-openssl-dev sshpass dos2unix libccid lib32z1
           ldd --version
       - name: Running on CentOS 7
         if:  matrix.container == 'centos:7'
@@ -45,6 +45,7 @@ jobs:
           aqtversion: ==2.1.*
           version: ${{ env.QT_VERSION }}
           target: desktop
+          setup-python: false
     # # The type of runner that the job will run on
     # runs-on: ubuntu-latest
 
