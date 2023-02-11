@@ -22,31 +22,32 @@ jobs:
     container: ${{ matrix.container }}
     strategy:
       matrix:
-        container: ['ubuntu:18.04', 'centos:7']
+        # container: ['ubuntu:18.04', 'centos:7']
+        container: ['shahbaz/ubuntu:18.04', 'centos:7']
     steps:
-      - name: Running on Ubuntu 18
-        if:  matrix.container == 'ubuntu:18.04'
-        run: |
-          set -x
-          cat /etc/*release*
-          apt-get -y update
-          apt-get -y install sudo libc6 gcc g++ build-essential glibc-source subversion upx chrpath \
-          diffstat cvs quilt cmake build-essential libssl-dev libpcsclite1 libpcsclite-dev dialog \
-          libusb-1.0-0-dev mercurial libncurses-dev libcurl4-openssl-dev sshpass dos2unix libccid \
-          lib32z1 python3 python3-pip python3-setuptools wget
-          apt-get -y upgrade gawk bison
-          wget https://ftp.gnu.org/gnu/glibc/glibc-2.34.tar.gz
-          tar xzvf glibc-2.34.tar.gz
-          cd glibc-2.34
-          GLIBC_DIR=$(pwd)
-          mkdir -p /opt/glibc
-          cd /opt/glibc
-          $GLIBC_DIR/configure --prefix=/opt/glibc
-          make
-          make install
-          cd
-          pip3 install -U setuptools
-          ldd --version
+      # - name: Running on Ubuntu 18
+      #   if:  matrix.container == 'ubuntu:18.04'
+      #   run: |
+      #     set -x
+      #     cat /etc/*release*
+      #     apt-get -y update
+      #     apt-get -y install sudo libc6 gcc g++ build-essential glibc-source subversion upx chrpath \
+      #     diffstat cvs quilt cmake build-essential libssl-dev libpcsclite1 libpcsclite-dev dialog \
+      #     libusb-1.0-0-dev mercurial libncurses-dev libcurl4-openssl-dev sshpass dos2unix libccid \
+      #     lib32z1 python3 python3-pip python3-setuptools wget
+      #     apt-get -y upgrade gawk bison
+      #     wget https://ftp.gnu.org/gnu/glibc/glibc-2.34.tar.gz
+      #     tar xzvf glibc-2.34.tar.gz
+      #     cd glibc-2.34
+      #     GLIBC_DIR=$(pwd)
+      #     mkdir -p /opt/glibc
+      #     cd /opt/glibc
+      #     $GLIBC_DIR/configure --prefix=/opt/glibc
+      #     make
+      #     make install
+      #     cd
+      #     pip3 install -U setuptools
+      #     ldd --version
       - name: Running on CentOS 7
         if:  matrix.container == 'centos:7'
         run: |
@@ -54,7 +55,7 @@ jobs:
           # yum -y update
           # yum install sudo -y
       - name: Download Qt
-        if:  matrix.container == 'ubuntu:18.04'
+        if:  matrix.container == 'shahbaz/ubuntu:18.04'
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: ==2.1.*
