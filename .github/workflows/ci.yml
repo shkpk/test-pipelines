@@ -23,11 +23,12 @@ jobs:
     container: ${{ matrix.container }}
     strategy:
       matrix:
-        container: ['ubuntu:18.04', 'centos:7']
-    #     container: ['shahbaz/ubuntu:18.04', 'centos:7']
+        # container: ['ubuntu:18.04', 'centos:7']
+        container: ['shahbaz/ubuntu:18.04', 'centos:7']
     steps:
       - name: Running on Ubuntu 18
-        if:  matrix.container == 'ubuntu:18.04'
+        # if:  matrix.container == 'ubuntu:18.04'
+        if:  matrix.container == 'shahbaz/ubuntu:18.04'
         run: |
           set -x
           cat /etc/*release*
@@ -56,13 +57,15 @@ jobs:
       #     # yum -y update
       #     # yum install sudo -y
       - name: Download Qt
-        if:  matrix.container == 'ubuntu:18.04'
+        # if:  matrix.container == 'ubuntu:18.04'
+        if:  matrix.container == 'shahbaz/ubuntu:18.04'
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: ==2.1.*
           version: ${{ env.QT_VERSION }}
           target: desktop
-          install-deps: false
+          LD_LIBRARY_PATH: /opt/glibc
+          # install-deps: false
           # setup-python: false
     # # The type of runner that the job will run on
     # runs-on: ubuntu-latest
