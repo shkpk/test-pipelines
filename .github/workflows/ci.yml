@@ -64,9 +64,9 @@ jobs:
           aqtversion: ==2.1.*
           version: ${{ env.QT_VERSION }}
           target: desktop
-          LD_LIBRARY_PATH: /opt/glibc
+          # LD_LIBRARY_PATH: /opt/glibc
           # install-deps: false
-          # setup-python: false
+          setup-python: false
     # # The type of runner that the job will run on
     # runs-on: ubuntu-latest
 
