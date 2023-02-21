@@ -24,7 +24,7 @@ jobs:
     strategy:
       matrix:
         # container: ['ubuntu:18.04', 'centos:7']
-        container: ['shahbaz/ubuntu:18.04', 'centos:7']
+        container: ['shahbaz/ubuntu:18.04', 'shahbaz/centos:7']
     steps:
       # - name: Running on Ubuntu 18
       #   # if:  matrix.container == 'ubuntu:18.04'
@@ -59,7 +59,8 @@ jobs:
       #     # yum install sudo -y
       - name: Download Qt
         # if:  matrix.container == 'ubuntu:18.04'
-        if:  matrix.container == 'shahbaz/ubuntu:18.04'
+        # if:  matrix.container == 'shahbaz/ubuntu:18.04'
+        if:  matrix.container == 'shahbaz/centos:7'
         uses: jurplel/install-qt-action@v3
         with:
           aqtversion: ==2.1.*
