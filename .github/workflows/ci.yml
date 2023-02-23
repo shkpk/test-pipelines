@@ -78,6 +78,7 @@ jobs:
           cd /tmp
           wget https://github.com/QuasarApp/CQtDeployer/releases/download/1.4.7/LinuxOfflineInstaller.run
           chmod +x LinuxOfflineInstaller.run
+          export QT_QPA_PLATFORM=offscreen
           ./LinuxOfflineInstaller.run --install
           whereis qmake
           whereis CQtDeployerTool
