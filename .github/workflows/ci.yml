@@ -74,6 +74,10 @@ jobs:
         if:  matrix.container == 'shahbaz/ubuntu:18.04'
         shell: bash
         run: |
+          cd /tmp
+          wget https://github.com/QuasarApp/CQtDeployer/releases/download/1.4.7/LinuxOfflineInstaller.run
+          chmod +x LinuxOfflineInstaller.run
+          ./LinuxOfflineInstaller.run --install
           whereis qmake
           whereis CQtDeployerTool
 
