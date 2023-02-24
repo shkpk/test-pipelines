@@ -75,14 +75,15 @@ jobs:
         shell: bash
         run: |
           apt-get -y install libfontconfig1 fontconfig libfontconfig1-dev libx11-xcb1 libasound2 x11-apps libice6 libsm6 libxaw7 libxft2 libxmu6 libxpm4 libxt6 x11-apps xbitmaps libxkbcommon-x11-dev
-          cd /tmp
-          # wget https://github.com/QuasarApp/CQtDeployer/releases/download/1.4.7/LinuxOfflineInstaller.run
-          # chmod +x LinuxOfflineInstaller.run
-          # export QT_QPA_PLATFORM=offscreen
-          # ./LinuxOfflineInstaller.run install
-          wget https://github.com/QuasarApp/CQtDeployer/releases/download/v1.6.2277/CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run
-          chmod +x CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run
-          ./CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run install
+          # cd /tmp
+          # # wget https://github.com/QuasarApp/CQtDeployer/releases/download/1.4.7/LinuxOfflineInstaller.run
+          # # chmod +x LinuxOfflineInstaller.run
+          # # export QT_QPA_PLATFORM=offscreen
+          # # ./LinuxOfflineInstaller.run install
+          # wget https://github.com/QuasarApp/CQtDeployer/releases/download/v1.6.2277/CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run
+          # chmod +x CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run
+          # ./CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run install
+          pwd
           whereis qmake
           whereis CQtDeployerTool
 
