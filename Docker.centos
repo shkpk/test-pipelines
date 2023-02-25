@@ -7,3 +7,7 @@ RUN yum -y install sudo libc6 gcc g++ build-essential glibc-source subversion up
 RUN yum -y groupinstall 'Development Tools'
 RUN pip3 install -U pip \
     &&  pip3 install -U setuptools
+RUN yum update -y
+RUN yum install -y centos-release-scl
+RUN yum install -y devtoolset-9
+RUN echo "source /opt/rh/devtoolset-9/enable" >> /etc/bashrc
