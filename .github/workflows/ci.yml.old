@@ -18,24 +18,14 @@ env:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    name: Build on ${{matrix.container }}
+    runs-on: ubuntu-latest
+    container: ${{ matrix.container }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        container: ['shahbaz/ubuntu:18.04', 'shahbaz/centos:7']
-    runs-on: ${{ matrix.os }}
-    name: Build on ${{matrix.container }}
-    # runs-on: ubuntu-latest
-    if:  matrix.os == 'ubuntu-latest'
-    container: ${{ matrix.container }}
-    # strategy:
-    #   matrix:
         # container: ['ubuntu:18.04', 'centos:7']
-
+        container: ['shahbaz/ubuntu:18.04', 'shahbaz/centos:7']
     steps:
-      - name: this is test job
-        run: |
-          echo "this is test job"
-          echo $QT_VERSION
       # - name: Running on Ubuntu 18
       #   # if:  matrix.container == 'ubuntu:18.04'
       #   if:  matrix.container == 'shahbaz/ubuntu:18.04'
@@ -67,40 +57,40 @@ jobs:
       #     cat /etc/centos-release
       #     # yum -y update
       #     # yum install sudo -y
-      # - name: Download Qt
-      #   # if:  matrix.container == 'ubuntu:18.04'
-      #   if:  matrix.container == 'shahbaz/ubuntu:18.04'
-      #   # if:  matrix.container == 'shahbaz/centos:7'
-      #   uses: jurplel/install-qt-action@v3
-      #   with:
-      #     aqtversion: ==2.1.*
-      #     version: ${{ env.QT_VERSION }}
-      #     target: desktop
-      #     # LD_LIBRARY_PATH: /opt/glibc
-      #     # install-deps: false
-      #     setup-python: false
+      - name: Download Qt
+        # if:  matrix.container == 'ubuntu:18.04'
+        if:  matrix.container == 'shahbaz/ubuntu:18.04'
+        # if:  matrix.container == 'shahbaz/centos:7'
+        uses: jurplel/install-qt-action@v3
+        with:
+          aqtversion: ==2.1.*
+          version: ${{ env.QT_VERSION }}
+          target: desktop
+          # LD_LIBRARY_PATH: /opt/glibc
+          # install-deps: false
+          setup-python: false
 
-      # - name: Testing paths
-      #   if:  matrix.container == 'shahbaz/ubuntu:18.04'
-      #   shell: bash
-      #   run: |
-      #     # apt-get -y install libfontconfig1 fontconfig libfontconfig1-dev libx11-xcb1 libasound2 x11-apps libice6 libsm6 libxaw7 libxft2 libxmu6 libxpm4 libxt6 x11-apps xbitmaps libxkbcommon-x11-dev libxcb-xinerama0 libgl1-mesa-glx libxcb*
-      #     # cd /tmp
-      #     # wget https://github.com/QuasarApp/CQtDeployer/releases/download/1.4.7/LinuxOfflineInstaller.run
-      #     # chmod +x LinuxOfflineInstaller.run
-      #     # export QT_QPA_PLATFORM=offscreen
-      #     # ./LinuxOfflineInstaller.run install
-      #     # wget https://github.com/QuasarApp/CQtDeployer/releases/download/v1.6.2277/CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run
-      #     # chmod +x CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run
-      #     # echo 'Yes' | ./CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run install
-      #     tar -xzvf /CQtDeployer.tar.gz -C $RUNNER_WORKSPACE
-      #     ls -al $RUNNER_WORKSPACE
-      #     ls -al $RUNNER_WORKSPACE/CQtDeployer
-      #     ls -al $RUNNER_WORKSPACE
-      #     pwd
-      #     whereis qmake
-      #     whereis CQtDeployerTool
-      #     env
+      - name: Testing paths
+        if:  matrix.container == 'shahbaz/ubuntu:18.04'
+        shell: bash
+        run: |
+          # apt-get -y install libfontconfig1 fontconfig libfontconfig1-dev libx11-xcb1 libasound2 x11-apps libice6 libsm6 libxaw7 libxft2 libxmu6 libxpm4 libxt6 x11-apps xbitmaps libxkbcommon-x11-dev libxcb-xinerama0 libgl1-mesa-glx libxcb*
+          # cd /tmp
+          # wget https://github.com/QuasarApp/CQtDeployer/releases/download/1.4.7/LinuxOfflineInstaller.run
+          # chmod +x LinuxOfflineInstaller.run
+          # export QT_QPA_PLATFORM=offscreen
+          # ./LinuxOfflineInstaller.run install
+          # wget https://github.com/QuasarApp/CQtDeployer/releases/download/v1.6.2277/CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run
+          # chmod +x CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run
+          # echo 'Yes' | ./CQtDeployer_1.6.2277.ecc6eed_Linux_x86_64.run install
+          tar -xzvf /CQtDeployer.tar.gz -C $RUNNER_WORKSPACE
+          ls -al $RUNNER_WORKSPACE
+          ls -al $RUNNER_WORKSPACE/CQtDeployer
+          ls -al $RUNNER_WORKSPACE
+          pwd
+          whereis qmake
+          whereis CQtDeployerTool
+          env
 
     # # The type of runner that the job will run on
     # runs-on: ubuntu-latest
