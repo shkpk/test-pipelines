@@ -34,3 +34,5 @@ jobs:
         run: |
           echo "this is test job"
           echo $QT_VERSION
+          gcc --version
+          g++ --version
