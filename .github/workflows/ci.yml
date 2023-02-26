@@ -31,6 +31,7 @@ jobs:
 
     steps:
       - name: this is test job
+        if:  matrix.container == 'shahbaz/centos:7'
         run: |
           echo "this is test job"
           echo $QT_VERSION
