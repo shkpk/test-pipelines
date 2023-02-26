@@ -36,3 +36,9 @@ jobs:
           echo $QT_VERSION
           gcc --version
           g++ --version
+          cat /etc/bashrc
+          source /opt/rh/devtoolset-9/enable
+          gcc --version
+          g++ --version
+          bash -c "gcc --version"
+          bash -c "g++ --version"
